@@ -24,8 +24,8 @@ public class Main {
         return "Такой ОC не существует";
     }
 
-    public static String calculatingDeliveryDays(int deliveryDistance, int timeOneZoneDelivery) {
-        if (timeOneZoneDelivery == 1) {
+    public static String calculatingDeliveryDays(int deliveryDistance) {
+        int timeOneZoneDelivery = 1;
         if (deliveryDistance > 100) {
             return "Доставки нет";
         } else if (deliveryDistance > 60) {
@@ -33,24 +33,23 @@ public class Main {
         } else if (deliveryDistance > 20) {
             timeOneZoneDelivery += 1;
         }
-        return "Потребуется дней доставки:  " + timeOneZoneDelivery;
-        }
-        return "";
+        return "Потребуется дней доставки: " + timeOneZoneDelivery;
+
     }
 
     public static void main(String[] args) {
 
-            System.out.println("Задача 1");
-            calculateLeapYear(2024);
+        System.out.println("Задача 1");
+        calculateLeapYear(2024);
 
-            System.out.println("Задача 2");
-            System.out.println(installingOsAndYear(1, 2014));
+        System.out.println("Задача 2");
+        System.out.println(installingOsAndYear(1, 2014));
 
-            System.out.println("Задача 3");
-            System.out.println(calculatingDeliveryDays(1, 35));
+        System.out.println("Задача 3");
+        System.out.println(calculatingDeliveryDays(40));
 
-        }
     }
+}
 
 
 

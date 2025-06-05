@@ -1,3 +1,5 @@
+import java.time.LocalDate;
+
 public class Main {
     private static Object args;
 
@@ -9,31 +11,32 @@ public class Main {
         }
     }
 
-    public static void installingOsAndYear(int clientOs) {
-        int clientDeviceYear = 2025;
-        if (clientOs == 0 && clientDeviceYear < 2025) {
+    public static void installingOsAndYear(int clientOs, int clientDeviceYear) {
+        int currentYear = LocalDate.now().getYear();
+        if (clientOs == 0 && clientDeviceYear < currentYear) {
             System.out.println("Установите облегченную версию приложения для системы iOS по ссылке");
         } else if (clientOs == 0) {
-            System.out.println("Установите приложения для системы iOS по ссылке");
+            System.out.println("Установите приложение для системы iOS по ссылке");
         }
-        if (clientOs == 1 && clientDeviceYear < 2025) {
+        if (clientOs == 1 && clientDeviceYear < currentYear) {
             System.out.println("Установите облегченную версию приложения для системы Android по ссылке");
         } else if (clientOs == 1) {
-            System.out.println("Установите приложения для системы Android по ссылке");
+            System.out.println("Установите приложение для системы Android по ссылке");
         }
     }
 
-    public static String calculatingDeliveryDays(int deliveryDistance) {
+    public static int calculatingDeliveryDays(int deliveryDistance) {
         int totalDays = 1;
         if (deliveryDistance > 100) {
-            return "Доставки нет";
+            return -1;
         } else if (deliveryDistance > 60) {
             totalDays += 2;
         } else if (deliveryDistance > 20) {
             totalDays += 1;
         }
-        return "Потребуется дней: " + totalDays;
+        return totalDays;
     }
+
 
     public static void main(String[] args) {
 
@@ -41,11 +44,19 @@ public class Main {
         calculateLeapYear(2024);
 
         System.out.println("Задача 2");
-        installingOsAndYear(0);
+        installingOsAndYear(0, 2025);
 
         System.out.println("Задача 3");
-        System.out.println(calculatingDeliveryDays (40));
-    }
+
+            int deliveryDistance = 110;  // выбери нужное расстояние
+
+            int days = calculatingDeliveryDays(deliveryDistance);
+            if (days == -1) {
+                System.out.println("Доставки нет");
+            } else {
+                System.out.println("Потребуется дней: " + days);
+            }
+        }
 }
 
 
